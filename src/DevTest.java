@@ -13,8 +13,11 @@ public class DevTest
 //        String name = getNonZeroLenString(in, "Enter your name");
 //        System.out.println("Name is " + name);
 
-        double salary = getDouble(in, "Enter salary");
-        System.out.println("Your salary is: " + salary);
+//        double salary = getDouble(in, "Enter salary");
+//        System.out.println("Your salary is: " + salary);
+
+        int favNum = getRangedInt(in, "Enter your fav num", 1, 10);
+        System.out.println("You said your fav num is " + favNum);
 
 
 
@@ -114,7 +117,46 @@ public class DevTest
         return retVal;
 
     }
+    /**
+     * gets an int value from the user within the specified inclusive range
+     * @param pipe Scanner to use for input
+     * @param prompt prompt that tells the user what to input
+     * @return an int value within the specified inclusive range
+     */
 
+    public static int getRangedInt(Scanner pipe, String prompt, int low, int high)
+    {
+        int retVal = 0;
+        String trash = "";
+        boolean done = false;
+
+        do
+        {
+            System.out.print(prompt + "[low - high]: ");
+            if (pipe.hasNextInt())
+            {
+                retVal = pipe.nextInt();
+                pipe.nextLine();
+                if (retVal >= low && retVal <= high)
+                {
+                    done = true;
+                }
+                else
+                {
+                    System.out.println("You must enter a valid integer in range [" + low + " - " + high + "]: not " + retVal);
+                }
+            }
+            else
+            {
+                trash = pipe.nextLine();
+                System.out.println("You must enter a valid integer, not " + trash);
+            }
+
+        }while(!done);
+
+        return retVal;
+
+    }
 
 
 }
