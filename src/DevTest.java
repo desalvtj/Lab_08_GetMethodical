@@ -6,12 +6,17 @@ public class DevTest
     {
         Scanner in = new Scanner(System.in);
 
-        int age = getInt(in, "Enter your age");
-        System.out.print("You said your age is " + age);
+//        int age = getInt(in, "Enter your age");
+//        System.out.print("You said your age is " + age);
 
 
 //        String name = getNonZeroLenString(in, "Enter your name");
 //        System.out.println("Name is " + name);
+
+        double salary = getDouble(in, "Enter salary");
+        System.out.println("Your salary is: " + salary);
+
+
 
     }
 
@@ -76,6 +81,39 @@ public class DevTest
 
     }
 
+    /**
+     * gets an unconstrained double value from the user
+     * @param pipe Scanner to use for input
+     * @param prompt prompt that tells the user what to input
+     * @return an unconstrained double value
+     */
+
+    public static double getDouble(Scanner pipe, String prompt)
+    {
+        double retVal = 0;
+        String trash = "";
+        boolean done = false;
+
+        do
+        {
+            System.out.print(prompt + ": ");
+            if (pipe.hasNextDouble())
+            {
+                retVal = pipe.nextDouble();
+                pipe.nextLine();
+                done = true;
+            }
+            else
+            {
+                trash = pipe.nextLine();
+                System.out.println("You must enter a valid double, not " + trash);
+            }
+
+        }while(!done);
+
+        return retVal;
+
+    }
 
 
 

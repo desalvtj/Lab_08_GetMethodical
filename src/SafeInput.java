@@ -61,7 +61,39 @@ public class SafeInput
         return retVal;
 
     }
+    /**
+     * gets an unconstrained double value from the user
+     * @param pipe Scanner to use for input
+     * @param prompt prompt that tells the user what to input
+     * @return an unconstrained double value
+     */
 
+    public static double getDouble(Scanner pipe, String prompt)
+    {
+        double retVal = 0;
+        String trash = "";
+        boolean done = false;
+
+        do
+        {
+            System.out.print(prompt + ": ");
+            if (pipe.hasNextDouble())
+            {
+                retVal = pipe.nextDouble();
+                pipe.nextLine();
+                done = true;
+            }
+            else
+            {
+                trash = pipe.nextLine();
+                System.out.println("You must enter a valid double, not " + trash);
+            }
+
+        }while(!done);
+
+        return retVal;
+
+    }
 
 
 
