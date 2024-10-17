@@ -16,9 +16,11 @@ public class DevTest
 //        double salary = getDouble(in, "Enter salary");
 //        System.out.println("Your salary is: " + salary);
 
-        int favNum = getRangedInt(in, "Enter your fav num", 1, 10);
-        System.out.println("You said your fav num is " + favNum);
+//        int favNum = getRangedInt(in, "Enter your fav num", 1, 10);
+//        System.out.println("You said your fav num is " + favNum);
 
+        double income = getRangedDouble(in, "Enter your income", 5000, 10000);
+        System.out.println("You said your income is " + income);
 
 
     }
@@ -157,6 +159,47 @@ public class DevTest
         return retVal;
 
     }
+    /**
+     * gets a double value from the user within the specified inclusive range
+     * @param pipe Scanner to use for input
+     * @param prompt prompt that tells the user what to input
+     * @return a double value within the specified inclusive range
+     */
+
+    public static double getRangedDouble(Scanner pipe, String prompt, double low, double high)
+    {
+        double retVal = 0;
+        String trash = "";
+        boolean done = false;
+
+        do
+        {
+            System.out.print(prompt + "[low - high]: ");
+            if (pipe.hasNextDouble())
+            {
+                retVal = pipe.nextDouble();
+                pipe.nextLine();
+                if (retVal >= low && retVal <= high)
+                {
+                    done = true;
+                }
+                else
+                {
+                    System.out.println("You must enter a valid double in range [" + low + " - " + high + "]: not " + retVal);
+                }
+            }
+            else
+            {
+                trash = pipe.nextLine();
+                System.out.println("You must enter a valid double, not " + trash);
+            }
+
+        }while(!done);
+
+        return retVal;
+
+    }
+
 
 
 }
