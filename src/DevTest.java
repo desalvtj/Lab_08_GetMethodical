@@ -1,10 +1,12 @@
 import java.util.Scanner;
+import java.util.regex.*;
 
 public class DevTest
 {
     public static void main(String[] args)
     {
         Scanner in = new Scanner(System.in);
+
 
 //        int age = getInt(in, "Enter your age");
 //        System.out.print("You said your age is " + age);
@@ -22,8 +24,11 @@ public class DevTest
 //        double income = getRangedDouble(in, "Enter your income", 5000, 10000);
 //        System.out.println("You said your income is " + income);
 
-        boolean leaveClass = getYNConfirm(in, "Are you ready to leave class?");
-        System.out.println(leaveClass);
+//        boolean leaveClass = getYNConfirm(in, "Are you ready to leave class?");
+//        System.out.println(leaveClass);
+
+          String SSN = "";
+          SSN = getRegExString(in, "Enter your SSN", "\\d{3}-\\d{2}-\\d{4}");
 
     }
 
@@ -243,6 +248,42 @@ public class DevTest
 
         }while(!done);
         return retVal;
+
+    }
+
+    /**
+     * get a String value from the user that matches the required format
+     *
+     * @param pipe scanner to use to read the input
+     * @param prompt prompt to tell the user what to input
+     * @param regEx java style regex pattern to constrain the input
+     * @return String that matches supplied pattern
+     */
+
+    public static String getRegExString(Scanner pipe, String prompt, String regEx)
+    {
+        String retVal = "";
+        boolean gotValue = false;
+
+
+        do
+        {
+            System.out.print(prompt + ": ");
+            retVal = pipe.nextLine();
+            if(retVal.matches(regEx))
+            {
+                gotValue = true;
+            }
+            else
+            {
+                System.out.println("\n" + retVal + " must match the pattern " + regEx);
+                System.out.println("Please try again.");
+            }
+
+        }while(!gotValue);
+
+        return retVal;
+
 
     }
 

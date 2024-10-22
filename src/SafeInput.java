@@ -218,7 +218,41 @@ public class SafeInput
         return retVal;
 
     }
+    /**
+     * get a String value from the user that matches the required format
+     *
+     * @param pipe scanner to use to read the input
+     * @param prompt prompt to tell the user what to input
+     * @param regEx java style regex pattern to constrain the input
+     * @return String that matches supplied pattern
+     */
 
+    public static String getRegExString(Scanner pipe, String prompt, String regEx)
+    {
+        String retVal = "";
+        boolean gotValue = false;
+
+
+        do
+        {
+            System.out.print(prompt + ": ");
+            retVal = pipe.nextLine();
+            if(retVal.matches(regEx))
+            {
+                gotValue = true;
+            }
+            else
+            {
+                System.out.println("\n" + retVal + " must match the pattern " + regEx);
+                System.out.println("Please try again.");
+            }
+
+        }while(!gotValue);
+
+        return retVal;
+
+
+    }
 
 
 }
