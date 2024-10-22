@@ -28,8 +28,11 @@ public class DevTest
 //        System.out.println(leaveClass);
 
 //          String SSN = "";
-//          SSN = getRegExString(in, "Enter your SSN", "\\d{3}-\\d{2}-\\d{4}");
+//          SSN = getRegExString(in, "Enter your SSN", "^\\d{3}-\\d{2}-\\d{4}$");
 //          System.out.println("Your SSN is: " + SSN);
+
+
+            prettyHeader(in, "Enter your message");
 
     }
 
@@ -269,7 +272,7 @@ public class DevTest
 
         do
         {
-            System.out.print(prompt + ": ");
+            System.out.print(prompt + regEx + ": ");
             retVal = pipe.nextLine();
             if(retVal.matches(regEx))
             {
@@ -284,10 +287,55 @@ public class DevTest
         }while(!gotValue);
 
         return retVal;
+    }
+
+    /**
+     * get a String value from the user and place it in a header
+     *
+     * @param pipe scanner to use to read the input
+     * @param prompt prompt to tell the user what to input
+     * @return Makes a header out of asterisks above and below the input text
+     */
+
+    public static void prettyHeader(Scanner pipe, String prompt)
+    {
+        String retVal = "";
+        final int HEADER_WIDTH = 54;
+        int msgLength = 0;
+        int remainder = 0;
+
+        System.out.println(prompt + ": ");
+        retVal = pipe.nextLine();
+
+        for(int row = 0; row < 60; row++)
+        {
+                System.out.print("*");
+        }
+        System.out.println();
+        msgLength = retVal.length();
+        remainder = HEADER_WIDTH - msgLength;
+        System.out.print("***");
+
+        for(int row = 0; row < (remainder/2); row++)
+        {
+            System.out.print(" ");
+        }
+        System.out.print(retVal);
+
+        for(int row = 0; row < (remainder/2); row++)
+        {
+            System.out.print(" ");
+        }
+
+        System.out.print("***");
+        System.out.println();
+        for(int row = 0; row < 60; row++)
+        {
+            System.out.print("*");
+        }
 
 
     }
-
 
 
 }
