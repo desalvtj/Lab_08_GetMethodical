@@ -27,8 +27,9 @@ public class DevTest
 //        boolean leaveClass = getYNConfirm(in, "Are you ready to leave class?");
 //        System.out.println(leaveClass);
 
-          String SSN = "";
-          SSN = getRegExString(in, "Enter your SSN", "\\d{3}-\\d{2}-\\d{4}");
+//          String SSN = "";
+//          SSN = getRegExString(in, "Enter your SSN", "\\d{3}-\\d{2}-\\d{4}");
+//          System.out.println("Your SSN is: " + SSN);
 
     }
 
