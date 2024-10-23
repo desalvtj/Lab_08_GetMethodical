@@ -32,7 +32,8 @@ public class DevTest
 //          System.out.println("Your SSN is: " + SSN);
 
 
-            prettyHeader(in, "Enter your message");
+//            prettyHeader(in, "Enter your message");
+
 
     }
 
@@ -334,7 +335,27 @@ public class DevTest
             System.out.print("*");
         }
 
+        /**
+         * Make a table comparing celsius and fahrenheit temperatures
+         *
+         * @param celsius makes a list of temperatures
+         * @return Makes a table with the celsius and fahrenheit temperatures in a table
+         */
+        public static double CtoF(double tempC)
 
+        double tempC = 0;
+        double tempF = 0;
+        final double CONVERSION = 1.8;
+        final int CONSTANT = 32;
+
+
+        System.out.print("Celsius  |  Fahrenheit");
+        System.out.println("-----------------------");
+        for(int row = -100; row < 100; row++)
+        {
+            tempF = tempC * CONVERSION + CONSTANT;
+            System.out.print(tempC + "   " + tempF);
+        }
     }
 
 
