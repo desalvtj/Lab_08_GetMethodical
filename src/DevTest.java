@@ -31,9 +31,9 @@ public class DevTest
 //          System.out.println("Your SSN is: " + SSN);
 
 
-//            prettyHeader(in, "Enter your message");
+//          prettyHeader(in, "Enter your message");
 
-        cToF(in);
+  //      cToF(in);
 
 
     }
@@ -271,31 +271,50 @@ public class DevTest
         final int HEADER_WIDTH = 54;
         int msgLength = 0;
         int remainder = 0;
+        int before = 0;
+        int after = 0;
 
         System.out.println(prompt + ": ");
         retVal = pipe.nextLine();
-
-        for (int row = 0; row < 60; row++) {
-            System.out.print("*");
-        }
-        System.out.println();
         msgLength = retVal.length();
-        remainder = HEADER_WIDTH - msgLength;
-        System.out.print("***");
 
-        for (int row = 0; row < (remainder / 2); row++) {
-            System.out.print(" ");
+        if (msgLength > HEADER_WIDTH)
+        {
+            System.out.println("Failed to create header, msg is too long!");
+            return;
         }
-        System.out.print(retVal);
+        else {
+            remainder = HEADER_WIDTH - msgLength;
+            if (remainder % 2 == 0)
+            {
+                before = remainder / 2;
+                after = remainder /2;
+            }
+            else
+            {
+                before = remainder / 2;
+                after = remainder / 2 + 1;
+            }
+            for (int row = 0; row < 60; row++) {
+                System.out.print("*");
+            }
+            System.out.println();
+            System.out.print("***");
 
-        for (int row = 0; row < (remainder / 2); row++) {
-            System.out.print(" ");
-        }
+            for (int row = 0; row < before; row++) {
+                System.out.print(" ");
+            }
+            System.out.print(retVal);
 
-        System.out.print("***");
-        System.out.println();
-        for (int row = 0; row < 60; row++) {
-            System.out.print("*");
+            for (int row = 0; row < after; row++) {
+                System.out.print(" ");
+            }
+
+            System.out.print("***");
+            System.out.println();
+            for (int row = 0; row < 60; row++) {
+                System.out.print("*");
+            }
         }
 
     }

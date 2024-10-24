@@ -253,6 +253,67 @@ public class SafeInput
 
 
     }
+    /**
+     * get a String value from the user and place it in a header
+     *
+     * @param pipe   scanner to use to read the input
+     * @param prompt prompt to tell the user what to input
+     * @return Makes a header out of asterisks above and below the input text
+     */
+
+    public static void prettyHeader(Scanner pipe, String prompt)
+    {
+        String retVal = "";
+        final int HEADER_WIDTH = 54;
+        int msgLength = 0;
+        int remainder = 0;
+        int before = 0;
+        int after = 0;
+
+        System.out.println(prompt + ": ");
+        retVal = pipe.nextLine();
+        msgLength = retVal.length();
+
+        if (msgLength > HEADER_WIDTH)
+        {
+            System.out.println("Failed to create header, msg is too long!");
+            return;
+        }
+        else {
+            remainder = HEADER_WIDTH - msgLength;
+            if (remainder % 2 == 0)
+            {
+                before = remainder / 2;
+                after = remainder /2;
+            }
+            else
+            {
+                before = remainder / 2;
+                after = remainder / 2 + 1;
+            }
+            for (int row = 0; row < 60; row++) {
+                System.out.print("*");
+            }
+            System.out.println();
+            System.out.print("***");
+
+            for (int row = 0; row < before; row++) {
+                System.out.print(" ");
+            }
+            System.out.print(retVal);
+
+            for (int row = 0; row < after; row++) {
+                System.out.print(" ");
+            }
+
+            System.out.print("***");
+            System.out.println();
+            for (int row = 0; row < 60; row++) {
+                System.out.print("*");
+            }
+        }
+
+    }
 
 
 }
