@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.regex.*;
 
 public class DevTest
 {
@@ -34,6 +33,8 @@ public class DevTest
 
 //            prettyHeader(in, "Enter your message");
 
+        cToF(in);
+
 
     }
 
@@ -41,7 +42,7 @@ public class DevTest
     /**
      * get a String value from the user which must be at least one character
      *
-     * @param pipe scanner to use to read the input
+     * @param pipe   scanner to use to read the input
      * @param prompt prompt to tell the user what to input
      * @return String that is at least one character
      */
@@ -50,49 +51,43 @@ public class DevTest
     {
         String retVal = "";
 
-        do
-        {
+        do {
             System.out.print(prompt + ": ");
             retVal = pipe.nextLine();
-            if(retVal.isEmpty())
-            {
+            if (retVal.isEmpty()) {
                 System.out.println("You must enter at least one character!");
             }
 
-        }while(retVal.isEmpty());
+        } while (retVal.isEmpty());
         return retVal;
 
     }
 
     /**
      * gets an unconstrained int value from the user
-     * @param pipe Scanner to use for input
+     *
+     * @param pipe   Scanner to use for input
      * @param prompt prompt that tells the user what to input
      * @return an unconstrained int value
      */
 
-    public static int getInt(Scanner pipe, String prompt)
-    {
+    public static int getInt(Scanner pipe, String prompt) {
         int retVal = 0;
         String trash = "";
         boolean done = false;
 
-        do
-        {
+        do {
             System.out.print(prompt + ": ");
-            if (pipe.hasNextInt())
-            {
+            if (pipe.hasNextInt()) {
                 retVal = pipe.nextInt();
                 pipe.nextLine();
                 done = true;
-            }
-            else
-            {
+            } else {
                 trash = pipe.nextLine();
                 System.out.println("You must enter a valid integer, not " + trash);
             }
 
-        }while(!done);
+        } while (!done);
 
         return retVal;
 
@@ -100,113 +95,97 @@ public class DevTest
 
     /**
      * gets an unconstrained double value from the user
-     * @param pipe Scanner to use for input
+     *
+     * @param pipe   Scanner to use for input
      * @param prompt prompt that tells the user what to input
      * @return an unconstrained double value
      */
 
-    public static double getDouble(Scanner pipe, String prompt)
-    {
+    public static double getDouble(Scanner pipe, String prompt) {
         double retVal = 0;
         String trash = "";
         boolean done = false;
 
-        do
-        {
+        do {
             System.out.print(prompt + ": ");
-            if (pipe.hasNextDouble())
-            {
+            if (pipe.hasNextDouble()) {
                 retVal = pipe.nextDouble();
                 pipe.nextLine();
                 done = true;
-            }
-            else
-            {
+            } else {
                 trash = pipe.nextLine();
                 System.out.println("You must enter a valid double, not " + trash);
             }
 
-        }while(!done);
+        } while (!done);
 
         return retVal;
 
     }
+
     /**
      * gets an int value from the user within the specified inclusive range
-     * @param pipe Scanner to use for input
+     *
+     * @param pipe   Scanner to use for input
      * @param prompt prompt that tells the user what to input
      * @return an int value within the specified inclusive range
      */
 
-    public static int getRangedInt(Scanner pipe, String prompt, int low, int high)
-    {
+    public static int getRangedInt(Scanner pipe, String prompt, int low, int high) {
         int retVal = 0;
         String trash = "";
         boolean done = false;
 
-        do
-        {
+        do {
             System.out.print(prompt + "[low - high]: ");
-            if (pipe.hasNextInt())
-            {
+            if (pipe.hasNextInt()) {
                 retVal = pipe.nextInt();
                 pipe.nextLine();
-                if (retVal >= low && retVal <= high)
-                {
+                if (retVal >= low && retVal <= high) {
                     done = true;
-                }
-                else
-                {
+                } else {
                     System.out.println("You must enter a valid integer in range [" + low + " - " + high + "]: not " + retVal);
                 }
-            }
-            else
-            {
+            } else {
                 trash = pipe.nextLine();
                 System.out.println("You must enter a valid integer, not " + trash);
             }
 
-        }while(!done);
+        } while (!done);
 
         return retVal;
 
     }
+
     /**
      * gets a double value from the user within the specified inclusive range
-     * @param pipe Scanner to use for input
+     *
+     * @param pipe   Scanner to use for input
      * @param prompt prompt that tells the user what to input
      * @return a double value within the specified inclusive range
      */
 
-    public static double getRangedDouble(Scanner pipe, String prompt, double low, double high)
-    {
+    public static double getRangedDouble(Scanner pipe, String prompt, double low, double high) {
         double retVal = 0;
         String trash = "";
         boolean done = false;
 
-        do
-        {
+        do {
             System.out.print(prompt + "[low - high]: ");
-            if (pipe.hasNextDouble())
-            {
+            if (pipe.hasNextDouble()) {
                 retVal = pipe.nextDouble();
                 pipe.nextLine();
-                if (retVal >= low && retVal <= high)
-                {
+                if (retVal >= low && retVal <= high) {
                     done = true;
-                }
-                else
-                {
+                } else {
                     System.out.println("You must enter a valid double in range [" + low + " - " + high + "]: not " + retVal);
                 }
-            }
-            else
-            {
+            } else {
                 trash = pipe.nextLine();
                 System.out.println("You must enter a valid double, not " + trash);
             }
 
-        }while(!done);
+        } while (!done);
 
         return retVal;
 
@@ -215,7 +194,7 @@ public class DevTest
     /**
      * get a String value from the user of [YyNn]
      *
-     * @param pipe scanner to use to read the input
+     * @param pipe   scanner to use to read the input
      * @param prompt prompt to tell the user what to input
      * @return true for Yy (yes) and false for Nn (no)
      */
@@ -227,31 +206,23 @@ public class DevTest
         boolean done = false;
 
 
-        do
-        {
+        do {
             System.out.print(prompt + "[YyNn]: ");
             input = pipe.nextLine();
-            if(input.isEmpty())
-            {
+            if (input.isEmpty()) {
                 System.out.println("You must enter Y or N!");
-            }
-            else if(input.equalsIgnoreCase("Y") )
-            {
+            } else if (input.equalsIgnoreCase("Y")) {
                 retVal = true;
                 done = true;
-            }
-            else if(input.equalsIgnoreCase("N") )
-            {
+            } else if (input.equalsIgnoreCase("N")) {
                 retVal = false;
                 done = true;
-            }
-            else
-            {
+            } else {
                 System.out.println("You must enter Y or N! Not " + input);
             }
 
 
-        }while(!done);
+        } while (!done);
         return retVal;
 
     }
@@ -259,9 +230,9 @@ public class DevTest
     /**
      * get a String value from the user that matches the required format
      *
-     * @param pipe scanner to use to read the input
+     * @param pipe   scanner to use to read the input
      * @param prompt prompt to tell the user what to input
-     * @param regEx java style regex pattern to constrain the input
+     * @param regEx  java style regex pattern to constrain the input
      * @return String that matches supplied pattern
      */
 
@@ -271,21 +242,17 @@ public class DevTest
         boolean gotValue = false;
 
 
-        do
-        {
+        do {
             System.out.print(prompt + regEx + ": ");
             retVal = pipe.nextLine();
-            if(retVal.matches(regEx))
-            {
+            if (retVal.matches(regEx)) {
                 gotValue = true;
-            }
-            else
-            {
+            } else {
                 System.out.println("\n" + retVal + " must match the pattern " + regEx);
                 System.out.println("Please try again.");
             }
 
-        }while(!gotValue);
+        } while (!gotValue);
 
         return retVal;
     }
@@ -293,7 +260,7 @@ public class DevTest
     /**
      * get a String value from the user and place it in a header
      *
-     * @param pipe scanner to use to read the input
+     * @param pipe   scanner to use to read the input
      * @param prompt prompt to tell the user what to input
      * @return Makes a header out of asterisks above and below the input text
      */
@@ -308,54 +275,57 @@ public class DevTest
         System.out.println(prompt + ": ");
         retVal = pipe.nextLine();
 
-        for(int row = 0; row < 60; row++)
-        {
-                System.out.print("*");
+        for (int row = 0; row < 60; row++) {
+            System.out.print("*");
         }
         System.out.println();
         msgLength = retVal.length();
         remainder = HEADER_WIDTH - msgLength;
         System.out.print("***");
 
-        for(int row = 0; row < (remainder/2); row++)
-        {
+        for (int row = 0; row < (remainder / 2); row++) {
             System.out.print(" ");
         }
         System.out.print(retVal);
 
-        for(int row = 0; row < (remainder/2); row++)
-        {
+        for (int row = 0; row < (remainder / 2); row++) {
             System.out.print(" ");
         }
 
         System.out.print("***");
         System.out.println();
-        for(int row = 0; row < 60; row++)
-        {
+        for (int row = 0; row < 60; row++) {
             System.out.print("*");
         }
 
-        /**
-         * Make a table comparing celsius and fahrenheit temperatures
-         *
-         * @param celsius makes a list of temperatures
-         * @return Makes a table with the celsius and fahrenheit temperatures in a table
-         */
-        public static double CtoF(double tempC)
+    }
+
+    public static double cToF(Scanner pipe)
+    {
 
         double tempC = 0;
         double tempF = 0;
+        double start = 0;
+        double end = 0;
         final double CONVERSION = 1.8;
         final int CONSTANT = 32;
 
+        System.out.print("Enter the starting temperature in Celsius: ");
+        start = pipe.nextDouble();
+        System.out.print("Enter the ending temperature in Celsius: ");
+        end = pipe.nextDouble();
 
-        System.out.print("Celsius  |  Fahrenheit");
+        System.out.print("Celsius | Fahrenheit");
+        System.out.println();
         System.out.println("-----------------------");
-        for(int row = -100; row < 100; row++)
-        {
+        tempC = start;
+        for (double row = start; row <= end; row++) {
             tempF = tempC * CONVERSION + CONSTANT;
-            System.out.print(tempC + "   " + tempF);
+            System.out.print(tempC + "       " + tempF);
+            System.out.println();
+            tempC++;
         }
+        return tempF;
     }
 
 
