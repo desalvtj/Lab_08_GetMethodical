@@ -346,6 +346,18 @@ public class DevTest
         }
         return tempF;
     }
+    /**
+     * Make a table showing Celsius and Fahrenheit equivalences
+     *
+     * @param c   Celsius value to be converted to Fahrenheit
+     * @return The table is made
+     */
+    public static double cToF (double c)
+    {
+        final double CONVERSION = 1.8;
+        final int CONSTANT = 32;
 
+        return c * CONVERSION + CONSTANT;
+    }
 
 }
